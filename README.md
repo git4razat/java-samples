@@ -1,2 +1,2 @@
 # java-samples
-Repo provides java samples for various solved in java.
+Repo provides samples for various problems solved in java.
