@@ -49,7 +49,7 @@ class DGraph {
 	}
 }
 
-class SnakeLadder {
+class GraphSnakeLadder {
 	// Perform BFS on graph g starting from given source vertex
 	public static void BFS(DGraph g, int source, int N) {
 		// create a queue used to do BFS

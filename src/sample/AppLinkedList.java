@@ -89,7 +89,7 @@ class LinkedList {
 	//HEAD
 	//20 -> 15 -> 10 -> 60 -> 1 
 
-							//HEAD
+	//HEAD
 	//20 <- 15 <- 10 <- 60 <- 1
 	//recursion
 	public Node reverse(Node head) {
@@ -154,6 +154,8 @@ class LinkedList {
             return head1;
         }
     }
+	
+	// o (m+n) - m & n are length of List 1 and LIst 2. 
 	
 	static int findMergeNode(Node head1, Node head2) {
 

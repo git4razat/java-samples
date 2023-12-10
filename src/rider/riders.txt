@@ -1,0 +1,10 @@
+Name	City	Timestamp
+Albert	NewYork	100
+Bob	SFO	150
+Albert	Boston	200
+Bob	Sunnyvale	300
+Peter	Boston	200
+Bob	Santa Clara	400
+Peter	NewYork	100
+Albert	Cambridge	250
+Peter	Cambridge	250

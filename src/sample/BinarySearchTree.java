@@ -45,7 +45,7 @@ public class BinarySearchTree {
 			return null;
 		}
 	}
-
+	
 	public int heightOfTree(BSTNode root) {
 		if (root == null) {
 			return -1;
@@ -99,6 +99,10 @@ public class BinarySearchTree {
 			return false;
 		}
 	}
+	
+	// Level Order Traversal or Breadth First Search - starting from root, put root in to queue and iterate over queue, and print each node and include
+	// children of that node into queue. No recursion required...
+	 
 
 	public static void levelOrder(BSTNode root) {
 		java.util.LinkedList<BSTNode> queue = new java.util.LinkedList<BSTNode>();
@@ -295,6 +299,15 @@ public class BinarySearchTree {
 		}
 		return (current.data);
 	}
+	
+	int maxValue(BSTNode root) {
+		BSTNode current = root;
+		/* loop down to find the rightmost leaf */
+		while (current.right != null) {
+			current = current.right;
+		}
+		return (current.data);
+	}
 
 	/**
 	 * Closest possible value in a BST - Recursive Time complexity - o(h) h - height
@@ -322,6 +335,29 @@ public class BinarySearchTree {
 		} else {
 			closestValueHelper(root.right, target);
 		}
+	}
+	
+	
+	/**
+	 * Alternate approach
+	 * @param root
+	 * @param target
+	 * @return
+	 */
+	public int closestValue(BSTNode root, double target) {
+		if (root.data > target && root.left != null) {
+			int l = closestValue(root.left, target);
+			if (Math.abs(l - target) < Math.abs(root.data - target))
+				return l;
+			return root.data;
+		}
+		if (root.data < target && root.right != null) {
+			int r = closestValue(root.right, target);
+			if (Math.abs(r - target) < Math.abs(root.data - target))
+				return r;
+			return root.data;
+		}
+		return root.data;
 	}
 
 	/**

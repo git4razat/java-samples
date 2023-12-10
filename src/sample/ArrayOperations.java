@@ -113,6 +113,7 @@ public class ArrayOperations {
 	// intersection of two sorted arrays
 	// {1,2,3,4}, {3,4,5,6} => {3,4}
 	// should remove duplicates
+	// if not sorted Sort arr1[] and arr2[]. This step takes O(mLogm + nLogn) time.
 	int[] getIntersection(int[] arr1, int[] arr2) {
 		List<Integer> result = new ArrayList<Integer>();
 		int i = 0, j = 0, k = 0;
