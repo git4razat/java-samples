@@ -13,7 +13,7 @@ public class MapInJava {
 
 class MyMap<K, V> {
 	private Entry<K, V>[] buckets;
-	private static final int INITIAL_CAPACITY = 1 << 4; // 16
+	private static final int INITIAL_CAPACITY = 16; // 16
 	private int size = 0;
 
 	public MyMap() {

@@ -22,6 +22,8 @@ class DisjointSet {
 	}
 
 	// Returns representative of x's set
+	// time complexity - o(log N)
+	// space complexity - o(N)
 	int find(int x) {
 		// Finds the representative of the set
 		// that x is an element of
@@ -41,6 +43,8 @@ class DisjointSet {
 
 	// Unites the set that includes x and the set
 	// that includes x
+	// time complexity - o(log N)
+	// space complexity - o(N)
 	void union(int x, int y) {
 		// Find representatives of two sets
 		int xRoot = find(x), yRoot = find(y);

@@ -6,16 +6,16 @@ public class NumOfIslandsDSU {
 
 	public static void main(String[] args) throws IOException {
 		int[][] a = new int[][] { 
-			/*{ 1, 1, 0, 0, 0 }, 
+			{ 1, 1, 0, 0, 0 }, 
 			{ 0, 1, 0, 0, 1 }, 
 			{ 1, 0, 0, 1, 1 }, 
 			{ 0, 0, 0, 0, 0 },
-			{ 1, 0, 1, 0, 1 } */
-			{ 0, 0, 0, 0, 0 }, 
+			{ 1, 0, 1, 0, 1 }
+			/*{ 0, 0, 0, 0, 0 }, 
 			{ 0, 0, 0, 0, 0 }, 
 			{ 0, 0, 0, 0, 0 }, 
 			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0 }
+			{ 0, 0, 0, 0, 0 }*/
 		};
 		System.out.println("Number of Islands is: " + countIslands(a));
 	}

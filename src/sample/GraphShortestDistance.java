@@ -69,6 +69,7 @@ public class GraphShortestDistance {
 	}
 
 	// this methods processes all neighbours of the just visited node
+	// time complexity - O(E logV)
 	private void graph_adjacentNodes(int u) {
 		int edgeDistance = -1;
 		int newDistance = -1;

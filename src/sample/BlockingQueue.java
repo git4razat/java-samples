@@ -42,5 +42,4 @@ public class BlockingQueue {
 			bQueue.dequeue();
 		}
 	}
-
 }
