@@ -7,66 +7,35 @@ public class NumOfIslands {
 	
 	// A utility function to do DFS for a 2D boolean matrix. It only considers
     // the 8 neighbours as adjacent vertices
-	// o(m*n) - time & space...stack is involved due to recursion...
-	
-    static void DFS(int[][] M, int i, int j, int ROW, int COL)
-    {
- 
-        // Base condition
-        // if i less than 0 or j less than 0 or i greater
-        // than ROW-1 or j greater than COL-  or if M[i][j]
-        // != 1 then we will simply return
-        if (i < 0 || j < 0 || i > (ROW - 1) || j > (COL - 1) || M[i][j] != 1) {
-            return;
-        }
- 
-        if (M[i][j] == 1) {
-            M[i][j] = 2;
-            DFS(M, i + 1, j, ROW, COL); // right side traversal
-            DFS(M, i - 1, j, ROW, COL); // left side traversal
-            DFS(M, i, j + 1, ROW, COL); // upward side traversal
-            DFS(M, i, j - 1, ROW, COL); // downward side traversal
-            // if diagonals are also considered
-            //DFS(M, i + 1, j + 1, ROW, COL); // upward-right side traversal
-            //DFS(M, i - 1, j - 1, ROW, COL); // downward-left side traversal
-            //DFS(M, i + 1, j - 1, ROW, COL); // downward-right side traversal
-            //DFS(M, i - 1, j + 1, ROW, COL); // upward-left side traversal
-        }
-    }
- 
-    static int countIslands(int[][] M)
-    {
-        int ROW = M.length;
-        int COL = M[0].length;
-        int count = 0;
-        for (int i = 0; i < ROW; i++) {
-            for (int j = 0; j < COL; j++) {
-                if (M[i][j] == 1) {
-                    count++;
-                    DFS(M, i, j, ROW, COL); // traversal starts from current cell
-                }
-            }
-        }
-        return count;
-    }
+	// o(mn) - time & space...stack is involved due to recursion...
+	// O(mn) - space  -- we may need to save the whole grid in memory if all cells are 1
+	public int numIslands(char[][] grid) {
+	    int result = 0;
+
+	    for (int i = 0; i < grid.length; ++i)
+	      for (int j = 0; j < grid[0].length; ++j)
+	        if (grid[i][j] == '1') {
+	          dfs(grid, i, j);
+	          ++result;
+	        }
+	    return result;
+	  }
+
+	  private void dfs(char[][] grid, int i, int j) {
+	    if (i < 0 || i == grid.length || j < 0 || j == grid[0].length)
+	      return;
+	    if (grid[i][j] != '1')
+	      return;
+
+	    grid[i][j] = '2'; // Mark '2' as visited.
+	    dfs(grid, i + 1, j);
+	    dfs(grid, i - 1, j);
+	    dfs(grid, i, j + 1);
+	    dfs(grid, i, j - 1);
+	  }
 	
 	public static void main(String[] args) {
-		/*int[][] matrix = {
-				{1, 1, 0, 0, 0},
-                {0, 1, 0, 0, 1},
-                {1, 0, 0, 1, 1},
-                {0, 0, 0, 0, 0},
-                {1, 0, 1, 0, 0}
-                };*/
-		// 5
-		/*int[][] matrix = {
-				{1, 1, 1, 1, 0},
-				{1, 1, 0, 1, 0},
-				{1, 1, 0, 0, 0},
-				{0, 0, 0, 0, 0}
-		};*/
-		//1
-		int[][] matrix = {
+		char[][] matrix = {
 				{1, 1, 0, 0, 0},
 				{1, 1, 0, 0, 0},
 				{0, 0, 1, 0, 0},
@@ -74,7 +43,7 @@ public class NumOfIslands {
 		};
 		//3
 		NumOfIslands obj = new NumOfIslands();
-		System.out.println(">>" + obj.countIslands(matrix));
+		System.out.println(">>" + obj.numIslands(matrix));
 		
 	}
 

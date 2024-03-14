@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class StringsAnagrams {
 
 	/*
-	 * Sorting and Comparing Time Complexity of below solution is o(nlon) Better to
+	 * Sorting and Comparing Time Complexity of below solution is o(nlogn) Better to
 	 * use alternate solution mentioned below that
 	 * 
 	 */
@@ -52,7 +52,7 @@ public class StringsAnagrams {
 		for (int i = 0; i < n1; i++) {
 			count += str1[i];
 		}
-
+		
 		// Subtract the Value of all the characters of second
 		// String
 		for (int i = 0; i < n2; i++) {

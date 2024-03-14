@@ -5,8 +5,7 @@ public class Singleton {
 	private static volatile Singleton instance;
 	private static Object mutex = new Object();
 
-	private Singleton() {
-	}
+	private Singleton() {}
 
 	public static Singleton getInstance() {
 		Singleton result = instance;

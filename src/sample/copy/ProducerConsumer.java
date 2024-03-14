@@ -52,6 +52,12 @@ class Producer implements Runnable {
 				System.out.println("Producer : Element:"+ element);
 				queue.add(element);
 				queue.notify();
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			
 		}
@@ -86,6 +92,12 @@ class Consumer implements Runnable {
 				int element = queue.poll();
 				System.out.println("Consumer :Got Element:"+ element);
 				queue.notify();
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		

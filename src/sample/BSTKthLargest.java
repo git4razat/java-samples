@@ -2,7 +2,7 @@ package sample;
 
 class BNode {
 	BNode left;
-	BNode right;
+	BNode right;	
 	int data;
 }
 

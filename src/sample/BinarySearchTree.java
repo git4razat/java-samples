@@ -11,6 +11,10 @@ public class BinarySearchTree {
 		root = null;
 	}
 
+	/**
+	 * o(logn) - for best scenarios ie Balanced BST
+	 * otherwise o(h) - in general - for worst, its o(n)
+	 */
 	public BSTNode insertRec(BSTNode root, int data) {
 		BSTNode node = new BSTNode(data);
 		if (root == null) {
@@ -25,10 +29,17 @@ public class BinarySearchTree {
 		return root;
 	}
 
+	/**
+	 * o(logn) - for best scenarios ie Balanced BST
+	 * o(h) in general
+	 */
 	public void insert(int data) {
 		root = insertRec(root, data);
 	}
 
+	/**
+	 * o(logn) - for best scenarios ie Balanced BST
+	 */
 	public BSTNode search(BSTNode root, int key) {
 
 		if (root == null) {
@@ -46,6 +57,7 @@ public class BinarySearchTree {
 		}
 	}
 	
+	// O(N)
 	public int heightOfTree(BSTNode root) {
 		if (root == null) {
 			return -1;
@@ -54,13 +66,20 @@ public class BinarySearchTree {
 		int lHeight = heightOfTree(root.left);
 		int rHeight = heightOfTree(root.right);
 
-		if (lHeight > rHeight) {
-			return lHeight + 1;
-		} else {
-			return rHeight + 1;
-		}
+		return Math.max(lHeight, rHeight) + 1;
 	}
+	
+	// O(N)
+	public int maxDepth(BSTNode root) {
 
+        if (root == null) return 0;
+
+        int leftD = maxDepth(root.left);
+        int rightD = maxDepth(root.right);
+        return Math.max(leftD, rightD) + 1;        
+    }
+
+	//O(N)
 	public void printInorderTrav(BSTNode root) {
 		if (root == null) {
 			return;
@@ -70,6 +89,7 @@ public class BinarySearchTree {
 		printInorderTrav(root.right);
 	}
 
+	
 	// lowest common ancestor
 	public BSTNode lca(BSTNode root, int a, int b) {
 		if (root.data > a && root.data > b) {
@@ -81,10 +101,12 @@ public class BinarySearchTree {
 		}
 	}
 
+	//O(N)
 	boolean checkBST(BSTNode root) {
 		return checkBSTUtil(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
 	}
 
+	//O(N)
 	boolean checkBSTUtil(BSTNode root, int min, int max) {
 		if (root == null) {
 			return true;
@@ -103,7 +125,7 @@ public class BinarySearchTree {
 	// Level Order Traversal or Breadth First Search - starting from root, put root in to queue and iterate over queue, and print each node and include
 	// children of that node into queue. No recursion required...
 	 
-
+	// O(N)
 	public static void levelOrder(BSTNode root) {
 		java.util.LinkedList<BSTNode> queue = new java.util.LinkedList<BSTNode>();
 		if (root != null)
@@ -120,6 +142,20 @@ public class BinarySearchTree {
 		}
 
 	}
+	
+	// O(N)
+	public boolean isSameTree(BSTNode p, BSTNode q) {
+
+        if (p == null && q == null) {
+            return true;
+        } 
+        
+        if (p == null || q == null || p.data != q.data) {
+            return false;
+        }
+
+        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+    }
 
 	// side view - https://www.techiedelight.com/print-left-view-of-binary-tree/
 	// side view (left or right) takes approach of looping elements at each level
@@ -128,6 +164,8 @@ public class BinarySearchTree {
 	// where as top or bottom view focus on hd i.e. horizontal distance for each
 	// element and process
 	// first or last element at each hd (for top or bottom view respectively)
+
+	// O(N)
 	public static void topView(BSTNode root) {
 		// also check right/left side view and bottom view of a bst
 
@@ -216,6 +254,8 @@ public class BinarySearchTree {
 
 	// post order and then swap.
 	// post order is left right root (processing)
+
+	// O(N)
 	public BSTNode invert(BSTNode root) {
 		if (root == null) {
 			return root;
@@ -226,6 +266,32 @@ public class BinarySearchTree {
 		root.right = leftNode;
 		return root;
 	}
+	
+	public String preOrderTraversalString(BSTNode root) {
+        if(root == null) {
+            return "null";
+        }
+
+        StringBuffer sb = new StringBuffer();
+        sb.append(root.data);
+        sb.append(preOrderTraversalString(root.left));
+        sb.append(preOrderTraversalString(root.right));
+
+        return sb.toString();
+    }
+
+
+	// check if tree with subRoot is subtree of tree with root
+	// use preorder traverse and string funcs
+    
+	// O(M + N) 
+	
+	public boolean isSubtree(BSTNode root, BSTNode subRoot) {
+        String fullString = preOrderTraversalString(root);
+        String subString = preOrderTraversalString(subRoot);
+
+        return (fullString.contains(subString));
+    }
 
 	// any path in the tree from root to a leaf node has sum equals to input number
 	// if yes, return true else false

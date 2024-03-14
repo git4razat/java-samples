@@ -47,7 +47,8 @@ class DisjointSet {
 	// space complexity - o(N)
 	void union(int x, int y) {
 		// Find representatives of two sets
-		int xRoot = find(x), yRoot = find(y);
+		int xRoot = find(x);
+		int yRoot = find(y);
 
 		// Elements are in the same set, no need
 		// to unite anything.
@@ -76,7 +77,7 @@ class DisjointSet {
 
 			// And increment the result tree's
 			// rank by 1
-			rank[xRoot] = rank[xRoot] + 1;
+			rank[xRoot]++;
 		}
 	}
 }

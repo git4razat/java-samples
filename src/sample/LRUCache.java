@@ -35,7 +35,6 @@ public class LRUCache {
 		// remove node and add to tail
 		removeLRUNode(t);
 		offerLRUNode(t);
-
 		return t.value;
 	}
 

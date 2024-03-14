@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+// Don't use this pls use NumOfISlandsUnionFind
+
 public class NumOfIslandsDSUWithRank {
 	
 	

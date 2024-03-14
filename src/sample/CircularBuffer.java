@@ -17,56 +17,33 @@ public class CircularBuffer<E> {
     }
 
     public boolean write(E element) {
-
         if (isFull()) {
         	return false;
         }
-        
         int nextWriteSeq = writeSequence + 1;
         data[nextWriteSeq % capacity] = element;
-
         writeSequence++;
         return true;
     }
 
     public E read() {
-
-        if (!isEmpty()) {
-
-            E nextValue = data[readSequence % capacity];
-            readSequence++;
-            return nextValue;
-        }
-
-        return null;
+    	if (isEmpty()) {
+    		return null;
+    	}
+    	E nextValue = data[readSequence % capacity];
+        readSequence++;
+        return nextValue;
     }
 
     public int size() {
-
         return (writeSequence - readSequence) + 1;
     }
 
     public boolean isEmpty() {
-
         return writeSequence < readSequence;
     }
 
     public boolean isFull() {
-
         return size() >= capacity;
     }
-    
-    /*private boolean isNotEmpty() {
-
-        return !isEmpty();
-    }
-
-    private boolean isNotFull() {
-
-        return !isFull();
-    }
-    
-    public int capacity() {
-    	return capacity;
-	}*/
 }

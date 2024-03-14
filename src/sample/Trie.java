@@ -124,4 +124,18 @@ public class Trie {
 		}
 		return results;
 	}
+	
+	public static void main(String[] args) {
+		Trie trie = new Trie();
+		List<String> words = List.of("hello", "dog", "hell", "cat", "a", "hel","help","helps","helping");
+		for (String word: words) {
+			trie.insert(word);
+		}
+		
+		System.out.println("dog::" +trie.search("dog"));
+		System.out.println("doggy::" +trie.search("doggy"));
+		
+		
+		System.out.println("hel::" +trie.autoComplete("hel"));
+	}
 }

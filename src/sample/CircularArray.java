@@ -14,7 +14,7 @@ public class CircularArray {
 	
 	
 	
-	// enqueue - write to tail
+	// enqueue - write to rear
 	
 	public void enqueue(int data) {
 		if (isFull()) {
@@ -31,6 +31,7 @@ public class CircularArray {
 		
 	}
 	
+	// dequeue - read from front
 	public int dequeue() {
 		int result = -1;
 		if (isEmpty()) {

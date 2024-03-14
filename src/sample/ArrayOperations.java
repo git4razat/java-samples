@@ -88,7 +88,7 @@ public class ArrayOperations {
 				result[k] = arr2[j];
 				j++;
 				k++;
-			} else { // equals
+			} else { // equals, consider only i or j and not both for result but increment all pointers;
 				result[k] = arr1[i];
 				k++;
 				i++;
@@ -204,18 +204,16 @@ public class ArrayOperations {
 	// time complexity o(n)
 	int maxSubArraySum(int[] arr) {
 		int size = arr.length;
-		int ans = Integer.MIN_VALUE;
+		int maxSum = Integer.MIN_VALUE;
 		int sum = 0;
 		for (int i = 0; i < size; i++) {
 			sum = sum + arr[i];
-			if (sum < arr[i]) {
-				sum = arr[i];
-			}
-			if (ans < sum) {
-				ans = sum;
+			maxSum = Math.max(maxSum, sum);
+			if (sum < 0) {
+				sum = 0;
 			}
 		}
-		return ans;
+		return maxSum;
 	}
 
 	// how many subArrays have sum equal to k
