@@ -16,9 +16,9 @@ class UnionFind {
 	
 	public int find(int u) {
 		if (parent[u] != u) {
-			u = find(parent[u]);
+			parent[u] = find(parent[u]);
 		}
-		return u; 
+		return parent[u]; 
 	}
 
 	public void unionByRank(int u, int v) {
