@@ -155,6 +155,24 @@ class LinkedList {
         }
     }
 	
+	int getNode(Node head, int positionFromTail) {
+	    // Write your code here
+	        if (head == null) {
+	            return -1;
+	        }
+	        Node current = head;
+	        Node pNode = head;
+	        int count = 0;
+	        while (current.next != null) {
+	            if (count >= positionFromTail) {
+	                pNode = pNode.next;
+	            }
+	            current = current.next;
+	            count++;
+	        }
+	        return pNode.data;
+	    }
+	
 	// o (m+n) - m & n are length of List 1 and LIst 2. 
 	
 	static int findMergeNode(Node head1, Node head2) {
