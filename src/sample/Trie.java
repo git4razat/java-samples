@@ -127,7 +127,7 @@ public class Trie {
 	
 	public static void main(String[] args) {
 		Trie trie = new Trie();
-		List<String> words = List.of("hello", "dog", "hell", "cat", "a", "hel","help","helps","helping");
+		/*List<String> words = List.of("hello", "dog", "hell", "cat", "a", "hel","help","helps","helping");
 		for (String word: words) {
 			trie.insert(word);
 		}
@@ -136,6 +136,6 @@ public class Trie {
 		System.out.println("doggy::" +trie.search("doggy"));
 		
 		
-		System.out.println("hel::" +trie.autoComplete("hel"));
+		System.out.println("hel::" +trie.autoComplete("hel"));*/
 	}
 }

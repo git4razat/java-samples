@@ -2,10 +2,9 @@ package sample2026;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-public class LRUCache <K,V>{
+public class LRUCache<K,V>{
 
     private static class Node<K,V> {
         K key;
@@ -42,7 +41,6 @@ public class LRUCache <K,V>{
     public V get(K key) {
         writeLock.lock();
         try {
-            writeLock.lock();
             Node<K, V> node = map.get(key);
             if (node == null) {
                 return null;
@@ -106,7 +104,9 @@ public class LRUCache <K,V>{
     }
 
 
+    public static void main(String[] args) {
 
+    }
 
 
 
