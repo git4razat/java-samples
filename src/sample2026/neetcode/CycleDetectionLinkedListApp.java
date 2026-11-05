@@ -27,12 +27,39 @@ public class CycleDetectionLinkedListApp {
         return false;
     }
 
-    public void printList(MergeLinkedListApp.SinglyLinkedListNode head) {
-        MergeLinkedListApp.SinglyLinkedListNode current = head;
-        while(current != null) {
-            System.out.println(current.data);
-            current = current.next;
+    public Node detectCycleAndReturnCycleNode(Node head) {
+        if (head == null || head.next == null) {
+            return null;
         }
+
+        Node slow = head;
+        Node fast = head;
+        boolean hasCycle = false;
+
+        // Phase 1: Determine if a cycle exists
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (slow == fast) {
+                hasCycle = true;
+                break;
+            }
+        }
+
+        // If no cycle was found, return null
+        if (!hasCycle) {
+            return null;
+        }
+
+        // Phase 2: Find the entry point of the cycle
+        fast = head; // Reset one pointer to head
+        while (slow != fast) {
+            slow = slow.next; // Move both at the same speed (1 step)
+            fast = fast.next;
+        }
+
+        return slow; // Both pointers now point to the start of the cycle
     }
 
     public static void main(String[] args) {
@@ -46,6 +73,9 @@ public class CycleDetectionLinkedListApp {
         head.next.next.next.next = cycleNode;
 
         System.out.println(app.hasCycle(head));
+        Node cycleNd = app.detectCycleAndReturnCycleNode(head);
+        System.out.println(cycleNode);
+        if (cycleNd != null) System.out.println(cycleNd.data);
 
         Node head1 = new Node(3);
         head1.next = new Node(2);
