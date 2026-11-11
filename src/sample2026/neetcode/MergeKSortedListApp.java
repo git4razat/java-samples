@@ -14,6 +14,15 @@ public class MergeKSortedListApp {
         }
     }
 
+    /**
+     * Time Complexity: (O(Nlog k))
+     *
+     *  Space Complexity: O(k)
+     *
+     *  k is the number of sorted linked lists
+     *  N is the total number of individual nodes (elements) across all of those lists combined
+     *
+     */
     public Node mergeKSortedLists(List<Node> lists) {
         PriorityQueue<Integer> minHeap = new PriorityQueue<>();
         for (Node head: lists) {

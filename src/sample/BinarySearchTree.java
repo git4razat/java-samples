@@ -103,24 +103,25 @@ public class BinarySearchTree {
 
 	//O(N)
 	boolean checkBST(BSTNode root) {
-		return checkBSTUtil(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+		return validate(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
 	}
 
 	//O(N)
-	boolean checkBSTUtil(BSTNode root, int min, int max) {
-		if (root == null) {
-			return true;
-		}
-		if (root.data < min || root.data > max) {
-			return false;
-		}
+    private boolean validate(BSTNode node, Integer min, Integer max) {
+        // An empty node is a valid BST
+        if (node == null) {
+            return true;
+        }
 
-		if (checkBSTUtil(root.left, min, root.data - 1) && checkBSTUtil(root.right, root.data + 1, max)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+        // Check the current node's value against the allowed range
+        if ((min != null && node.data <= min) || (max != null && node.data >= max)) {
+            return false;
+        }
+
+        // Recursively check the left subtree (upper bound updates to node.val)
+        // and the right subtree (lower bound updates to node.val)
+        return validate(node.left, min, node.data) && validate(node.right, node.data, max);
+    }
 	
 	// Level Order Traversal or Breadth First Search - starting from root, put root in to queue and iterate over queue, and print each node and include
 	// children of that node into queue. No recursion required...
@@ -180,7 +181,7 @@ public class BinarySearchTree {
 		}
 
 		java.util.LinkedList<QNode> queue = new java.util.LinkedList<QNode>();
-		java.util.Map<Integer, Integer> map = new java.util.HashMap<Integer, Integer>();
+		java.util.TreeMap<Integer, Integer> map = new java.util.TreeMap<Integer, Integer>();
 		if (root == null) {
 			return;
 		}

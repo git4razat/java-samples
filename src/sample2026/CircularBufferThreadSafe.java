@@ -89,7 +89,7 @@ public class CircularBufferThreadSafe<E> {
                 }
                 count++;
             }
-        });
+        }, "t1");
 
         Thread t2 = new Thread(() -> {
             while (true) {
@@ -101,7 +101,7 @@ public class CircularBufferThreadSafe<E> {
                     break;
                 }
             }
-        });
+        }, "t2");
 
         t1.start();
         t2.start();
